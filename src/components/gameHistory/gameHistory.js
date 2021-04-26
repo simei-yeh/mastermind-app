@@ -4,7 +4,7 @@ import styles from './gameHistory.module.css'
  const GameHistory = ({ guess, show, callback }) => {
   return (
     <div className={styles['gameHistory']}>
-      Past Games
+      <span>Past Guesses</span>
     </div>
   )
 }
