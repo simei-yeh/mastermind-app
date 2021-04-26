@@ -1,0 +1,8 @@
+.gameContainer {
+  flex: 8 1 80%;
+  border: 1px solid darkgray;
+  border-radius: 1%;
+  margin: 0.5em;
+  box-sizing: border-box;
+
+}

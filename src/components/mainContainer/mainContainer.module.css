@@ -1,0 +1,14 @@
+.mainContainer {
+  margin: auto;
+  border: 2px white solid;
+  background-color: white;
+  border-radius: 15px;
+  height: 75%;
+  width: 90%;
+  min-width: 250px;
+  max-width: 767px;
+  min-height: 400px;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+}
