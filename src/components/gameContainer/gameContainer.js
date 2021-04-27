@@ -4,9 +4,9 @@ import GameHistory from '../gameHistory/gameHistory';
 import CurrentGuess from '../currentGuess/currentGuess';
 import randomNumberAPI from '../randomNumberGeneratorAPI'
 
-const GameContainer = ({ children }) => {
-  const [startGame, setStartGame] = useState(false);
-  const [pattern, setPattern] = useState([]);
+const GameContainer = ({ }) => {
+  const [startGame, setStartGame] = useState(true);
+  const [pattern, setPattern] = useState(new Array(4).fill(''));
   const [guess, setGuess] = useState([]);
   const [round, setRound] = useState(null);
 
@@ -35,6 +35,7 @@ const GameContainer = ({ children }) => {
       <CurrentGuess
         newGame={startGame}
         round={round}
+        pattern={pattern}
         start={() => { setStartGame(true) }}
         nextRound={() => { setRound(round - 1) }}
         submitGuess={(e) => {setGuess(e)}}
