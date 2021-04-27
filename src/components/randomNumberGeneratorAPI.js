@@ -37,6 +37,3 @@ class randomNumberAPI {
 }
 
 module.exports = new randomNumberAPI();
-
-const randomAPI = new randomNumberAPI();
-randomAPI.findNewNumbers();
