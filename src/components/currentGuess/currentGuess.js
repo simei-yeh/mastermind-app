@@ -20,7 +20,7 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
       setNewGuesses({});
     } else {
       let missing = [];
-      pattern.forEach((num, i) => (newGuesses[i] === undefined) ? missing.push(i) : null)
+      pattern.forEach((num, i) => (newGuesses[i] === undefined) ? missing.push(i+1) : null)
       alert(`Enter remaining numbers at location(s) ${missing}`)
     }
   }

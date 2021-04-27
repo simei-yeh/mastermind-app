@@ -7,9 +7,9 @@ const GameHistory = ({ past, show, callback }) => {
       <span>Past Guesses</span>
       <div>
         {past.map((round, i) =>
-          <div key={i}>
+          <div key={i} className={styles['roundContainer']}>
           {round.map((r, i) =>
-            <span key={i}>{r}</span>
+            <span key={i} className={styles['guess']}>{r}</span>
           )}
           </div>
         )}
