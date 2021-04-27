@@ -12,8 +12,8 @@ const Input = ({ show, callback, value, name }) => {
             className={styles['inputs']}
             onChange={callback}
             name={name}
+            value={value}
             >
-          {value}
         </input>
         : null
       }

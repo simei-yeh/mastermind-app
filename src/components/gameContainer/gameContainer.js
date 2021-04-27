@@ -38,7 +38,7 @@ const GameContainer = ({ }) => {
         pattern={pattern}
         start={() => { setStartGame(true) }}
         nextRound={() => { setRound(round - 1) }}
-        submitGuess={(e) => {setGuess(e)}}
+        submitGuess={(array) => {setGuess(array)}}
         endGame={() => { setRound(0) }}
       />
     </div>

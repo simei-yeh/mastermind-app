@@ -13,6 +13,11 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound
     console.log(unsubmittedGuesses)
   }
 
+  const handleSubmit = (e) => {
+    submitGuess(Object.values(unsubmittedGuesses));
+    setUnsubmittedGuesses({});
+  }
+
   return (
     <div className={styles['currentGuess']}>
       <span>Current Guess</span>
@@ -22,11 +27,19 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound
         {newGame ? <span>{round === 0 ? `End of Game` : `Rounds Remaining: ${round}`}</span> : null}
       </div>
       <div>
-        {pattern.map((num, i) => <Input key={i} name={i} num={num} show={newGame} callback={handleInputChange} />)}
+        {pattern.map((num, i) =>
+          <Input
+            key={i}
+            name={i}
+            num={num}
+            show={newGame}
+            value={unsubmittedGuesses[i] | ''}
+            callback={handleInputChange}
+          />)}
       </div>
       {/* buttons to submit answers, continue game play after reviewing answer results, end game */}
       <div>
-        <Button id={`confirm`} show={newGame} callback={submitGuess} text={`Submit to check answers`} />
+        <Button id={`confirm`} show={newGame} callback={handleSubmit} text={`Submit to check answers`} />
         <Button id={`continue`} show={newGame} callback={nextRound} text={`Continue`} />
         <Button id={`end`} show={newGame} callback={endGame} text={`End Game`} />
       </div>
