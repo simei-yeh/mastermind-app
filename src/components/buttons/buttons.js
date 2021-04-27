@@ -3,9 +3,14 @@ import styles from './buttons.module.css'
 
  const Button = ({ text, show, callback }) => {
   return (
-    <div className={styles['buttons']}>
-      {text}
-    </div>
+    <>
+    {show
+      ? <div className={styles['buttons']} onClick={callback} >
+         {text}
+        </div>
+      : null
+    }
+    </>
   )
 }
 
