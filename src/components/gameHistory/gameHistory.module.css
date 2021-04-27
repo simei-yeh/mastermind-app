@@ -1,14 +1,30 @@
 .gameHistory {
+  font-size: 1.5vw;
   flex: 1 1;
-  border: 1px solid black;
+  border-right: 1px solid black;
   padding: 1em;
   box-sizing: border-box;
 }
 
-.roundContainer {
+.header {
+  margin: 2.5% 0 5% 0;
+}
 
+.roundContainer {
+  font-size: 1.25vw;
+  padding: 0.5vw;
+  margin: 2.5%;
+  box-sizing: border-box;
 }
 
 .guess {
+  display: inline-block;
+}
 
+.guessContainer {
+  display: inline-block;
+  padding: 0.5em;
+  margin: 0.25vw;
+  border: 1px solid black;
+  border-radius: 50%;
 }

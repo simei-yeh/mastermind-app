@@ -7,22 +7,34 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
   const [newGuesses, setNewGuesses] = useState({});
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, onKeyDown  } = e.target;
     // need to validate guess as numbe && within range
-    setNewGuesses({ ...newGuesses, [name]: value });
-    console.log(newGuesses)
+    let newValue = parseInt(value);
+
+    if (isNaN(newValue) || newValue > 7 || newValue < 0) {
+      console.log(onKeyDown )
+      alert('Enter valid number')
+
+    } else {
+      setNewGuesses({ ...newGuesses, [name]: newValue });
+      console.log(newGuesses)
+    }
   }
 
   const handleSubmit = (e) => {
     let submission = Object.values(newGuesses);
     if (submission.length === pattern.length) {
       submitGuess(submission);
-      setNewGuesses({});
     } else {
       let missing = [];
       pattern.forEach((num, i) => (newGuesses[i] === undefined) ? missing.push(i+1) : null)
       alert(`Enter remaining numbers at location(s) ${missing}`)
     }
+  }
+
+  const continueGame = (e) => {
+    setNewGuesses({});
+    nextRound();
   }
 
   return (
@@ -47,7 +59,7 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
       {/* buttons to submit answers, continue game play after reviewing answer results, end game */}
       <div>
         <Button id={`confirm`} show={newGame} callback={handleSubmit} text={`Submit to check answers`} />
-        <Button id={`continue`} show={newGame} callback={nextRound} text={`Continue`} />
+        <Button id={`continue`} show={newGame} callback={continueGame} text={`Continue`} />
         <Button id={`end`} show={newGame} callback={endGame} text={`End Game`} />
       </div>
     </div>
