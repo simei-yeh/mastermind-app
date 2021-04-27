@@ -7,7 +7,7 @@ import randomNumberAPI from '../randomNumberGeneratorAPI'
 const GameContainer = ({ }) => {
   const [startGame, setStartGame] = useState(true);
   const [pattern, setPattern] = useState(new Array(4).fill(''));
-  const [guess, setGuess] = useState([]);
+  const [pastGuesses, setPastGuesses] = useState([]);
   const [round, setRound] = useState(null);
 
   useEffect(() => {
@@ -31,14 +31,14 @@ const GameContainer = ({ }) => {
 
   return (
     <div className={styles['gameContainer']}>
-      <GameHistory />
+      <GameHistory past={pastGuesses} />
       <CurrentGuess
         newGame={startGame}
         round={round}
         pattern={pattern}
         start={() => { setStartGame(true) }}
         nextRound={() => { setRound(round - 1) }}
-        submitGuess={(array) => {setGuess(array)}}
+        submitGuess={(array) => {setPastGuesses([...pastGuesses, array])}}
         endGame={() => { setRound(0) }}
       />
     </div>

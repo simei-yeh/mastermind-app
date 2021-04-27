@@ -3,19 +3,26 @@ import styles from './currentGuess.module.css'
 import Button from '../buttons/buttons'
 import Input from '../inputs/inputs'
 
-const CurrentGuess = ({ newGame, round, pattern, start, nextRound
-  , submitGuess, endGame }) => {
-  const [unsubmittedGuesses, setUnsubmittedGuesses] = useState({});
+const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, endGame }) => {
+  const [newGuesses, setNewGuesses] = useState({});
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setUnsubmittedGuesses({ ...unsubmittedGuesses, [name]: value });
-    console.log(unsubmittedGuesses)
+    // need to validate guess as numbe && within range
+    setNewGuesses({ ...newGuesses, [name]: value });
+    console.log(newGuesses)
   }
 
   const handleSubmit = (e) => {
-    submitGuess(Object.values(unsubmittedGuesses));
-    setUnsubmittedGuesses({});
+    let submission = Object.values(newGuesses);
+    if (submission.length === pattern.length) {
+      submitGuess(submission);
+      setNewGuesses({});
+    } else {
+      let missing = [];
+      pattern.forEach((num, i) => (newGuesses[i] === undefined) ? missing.push(i) : null)
+      alert(`Enter remaining numbers at location(s) ${missing}`)
+    }
   }
 
   return (
@@ -33,7 +40,7 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound
             name={i}
             num={num}
             show={newGame}
-            value={unsubmittedGuesses[i] | ''}
+            value={newGuesses[i] | ''}
             callback={handleInputChange}
           />)}
       </div>
