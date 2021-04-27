@@ -11,6 +11,7 @@ const CurrentGuess = ({ guess, show, callback, newGame, start, round, submitGues
         <Button text={`Click play to begin`} id={`start`} show={!newGame} callback={start} />
         {newGame ? <span>{`Rounds Remaining: ${round}`}</span> : null}
       </div>
+
       {/* buttons to submit answers, continue game play after reviewing answer results, end game */}
       <div>
         <Button text={`Submit to check answers`} id={`confirm`} show={newGame} callback={submitGuess} />

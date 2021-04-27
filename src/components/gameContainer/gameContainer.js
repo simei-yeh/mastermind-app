@@ -2,14 +2,21 @@ import React, { useState, useEffect } from 'react';
 import styles from './gameContainer.module.css';
 import GameHistory from '../gameHistory/gameHistory';
 import CurrentGuess from '../currentGuess/currentGuess';
+import randomNumberAPI from '../randomNumberGeneratorAPI'
 
- const GameContainer = ({ children }) => {
+const GameContainer = ({ children }) => {
   const [startGame, setStartGame] = useState(false);
+  const [pattern, setPattern] = useState([]);
   const [guess, setGuess] = useState([]);
   const [round, setRound] = useState(null);
 
   useEffect(() => {
+    var answers;
     if (startGame) {
+      (async function () {
+        answers = await randomNumberAPI.findNewNumbers();
+        setPattern(answers);
+      })();
       setRound(10);
     }
   }, [startGame])
@@ -28,10 +35,10 @@ import CurrentGuess from '../currentGuess/currentGuess';
       <CurrentGuess
         newGame={startGame}
         round={round}
-        start={() => {setStartGame(true)}}
-        nextRound={() => {setRound(round-1)}}
-        submitGuess={() => {}}
-        endGame={() => {setRound(0)}}
+        start={() => { setStartGame(true) }}
+        nextRound={() => { setRound(round - 1) }}
+        submitGuess={(e) => {setGuess(e)}}
+        endGame={() => { setRound(0) }}
       />
     </div>
   )
