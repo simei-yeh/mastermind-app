@@ -36,4 +36,4 @@ class randomNumberAPI {
   }
 }
 
-module.exports = new randomNumberAPI();
+module.exports = randomNumberAPI;
