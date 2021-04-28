@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './currentGuess.module.css'
 import Button from '../buttons/buttons'
 import Input from '../inputs/inputs'
+import Header from '../header/header'
 
 const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, endGame }) => {
   const [newGuesses, setNewGuesses] = useState({});
@@ -35,8 +36,6 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
   const checkGuessesCorrect = (guesses) => {
     let answers = []
     for (let i = 0; i < guesses.length; i++) {
-      console.log(guesses[i] === pattern[i])
-      console.log(pattern.includes(guesses[i]) !== -1);;
       if (guesses[i] === pattern[i]) {answers.push('correct');}
       else if (pattern.includes(guesses[i])) {answers.push('partiallyCorrect');}
       else {answers.push('incorrect');}
@@ -51,7 +50,7 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
 
   return (
     <div className={styles['currentGuess']}>
-      <span>Current Guess</span>
+      <Header message={`Current Guesses`} header={`sub-header`} />
       {/* button to start game and note to indicate number of remaining rounds */}
       <div>
         <Button id={`start`} show={!newGame} callback={start} text={`Click play to begin`} />

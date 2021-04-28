@@ -1,11 +1,10 @@
 import React from 'react';
 import styles from './header.module.css'
 
- const Header = ({ text, status, children }) => {
+const Header = ({ status, children, message, header }) => {
   return (
-    <div className={styles['header']}>
-      <span className={styles['header-content']}>{`Welcome! Let's play Mastermind`}</span>
-      {children}
+    <div className={`${styles['header']} ${styles[header]}`}>
+      {message}
     </div>
   )
 }

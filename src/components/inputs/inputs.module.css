@@ -1,0 +1,13 @@
+.inputs {
+  padding: 1em;
+  margin: 0.5vw;
+  border: 1px black solid;
+  box-sizing: border-box;
+  display: inline-block;
+  border-radius: 50%;
+  font-size: larger;
+}
+
+.inputs:focus {
+  outline: none;
+}

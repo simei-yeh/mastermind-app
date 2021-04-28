@@ -1,15 +1,22 @@
 .header {
   margin: 0.5em;
   box-sizing: border-box;
-  border: 1px solid darkgray;
-  border-radius: 5px;
+
   box-shadow: 2px 2px 2px 1px rgba(231, 244, 252, 0.5);
   flex: 1 0 5%;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  font-size: 2vw;
 }
 
-.header-content {
-  font-size: x-large;
+.main-header {
+  border: 1px solid darkgray;
+  border-radius: 10px;
+}
+
+.sub-header {
+  border: 1px lightseagreen solid;
+  border-radius: 10px;
+  padding: 0.75vh;
 }

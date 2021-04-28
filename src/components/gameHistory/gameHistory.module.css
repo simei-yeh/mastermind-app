@@ -1,15 +1,8 @@
 .gameHistory {
-  font-size: 2vw;
+
   flex: 1 1;
   padding: 1em;
   box-sizing: border-box;
-}
-
-.header {
-  padding: 2.5% 0 2.5% 0;
-  margin-bottom: 5%;
-  border: 1px lightseagreen solid;
-  border-radius: 10px;
 }
 
 .roundContainer {
@@ -27,6 +20,7 @@
   display: inline-block;
   padding: 0.5em;
   margin: 0.25vw;
+  font-size: 2vw;
   border: 1px solid black;
   border-radius: 50%;
   font-weight: bolder;

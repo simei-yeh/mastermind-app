@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './gameHistory.module.css'
+import Header from '../header/header'
 
 const GameHistory = ({ past, pattern }) => {
   return (
     <div className={styles['gameHistory']}>
-      <div className={styles['header']}>Past Guesses</div>
+      <Header message={`Past Guesses`} header={`sub-header`} />
       <div>
         {past.map((round, i) =>
           <div key={i} className={styles['roundContainer']}>

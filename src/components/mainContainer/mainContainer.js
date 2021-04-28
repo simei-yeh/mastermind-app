@@ -9,7 +9,7 @@ const MainContainer = ({ }) => {
 
   return (
     <div className={styles['mainContainer']}>
-      <Header>
+      <Header message={`Welcome! Let's play Mastermind`} header={`main-header` } >
         {/* <Button
           text={`If you're ready to play, click here`}
           show={!enter}

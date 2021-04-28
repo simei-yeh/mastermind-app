@@ -7,8 +7,6 @@ const Input = ({ show, callback, value, name }) => {
       {show
         ? <input
             type="number"
-            min="0"
-            max="7"
             className={styles['inputs']}
             onChange={callback}
             name={name}
