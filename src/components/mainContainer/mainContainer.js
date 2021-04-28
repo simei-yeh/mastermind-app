@@ -3,24 +3,31 @@ import styles from './mainContainer.module.css'
 import Button from '../buttons/buttons'
 import Header from '../header/header'
 import GameContainer from '../gameContainer/gameContainer'
+import Brain from '../../brain.png'
 
 const MainContainer = ({ }) => {
-  const [enter, setEnter] = useState(true);
+  const [enter, setEnter] = useState(false);
 
   return (
     <div className={styles['mainContainer']}>
-      <Header message={`Welcome! Let's play Mastermind`} header={`main-header` } >
-        {/* <Button
-          text={`If you're ready to play, click here`}
-          show={!enter}
-          callback={() => { setEnter(true) }}
-        /> */}
-      </Header>
       {enter
-        ? <GameContainer />
-        : null
+        ? <>
+          <Header message={`Mastermind`} header={`main-header`} >
+          </Header>
+          <GameContainer />
+        </>
+        :
+        <>
+          <img src={Brain} className={styles['mainImage']} />
+          <Header message={`Welcome! Let's play Mastermind`} header={`entry-header`} />
+          <Button
+            text={`Click here to play!`}
+            show={true}
+            callback={() => { setEnter(true) }}
+          />
+          </>
       }
-    </div>
+      </div>
   )
 }
 
