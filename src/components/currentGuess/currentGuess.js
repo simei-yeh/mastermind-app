@@ -16,7 +16,7 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
       alert('Enter valid number')
 
     } else {
-      setNewGuesses({ ...newGuesses, [name]: newValue });
+      setNewGuesses({ ...newGuesses, [name]: `${newValue}` });
       console.log(newGuesses)
     }
   }
@@ -24,12 +24,24 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
   const handleSubmit = (e) => {
     let submission = Object.values(newGuesses);
     if (submission.length === pattern.length) {
-      submitGuess(submission);
+      submitGuess([submission, checkGuessesCorrect(submission)]);
     } else {
       let missing = [];
       pattern.forEach((num, i) => (newGuesses[i] === undefined) ? missing.push(i+1) : null)
       alert(`Enter remaining numbers at location(s) ${missing}`)
     }
+  }
+
+  const checkGuessesCorrect = (guesses) => {
+    let answers = []
+    for (let i = 0; i < guesses.length; i++) {
+      console.log(guesses[i] === pattern[i])
+      console.log(pattern.includes(guesses[i]) !== -1);;
+      if (guesses[i] === pattern[i]) {answers.push('correct');}
+      else if (pattern.includes(guesses[i])) {answers.push('partiallyCorrect');}
+      else {answers.push('incorrect');}
+    }
+    return answers;
   }
 
   const continueGame = (e) => {

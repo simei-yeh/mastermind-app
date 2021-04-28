@@ -14,7 +14,8 @@ const GameContainer = ({ }) => {
     var answers;
     if (startGame) {
       (async function () {
-        answers = await randomNumberAPI.findNewNumbers();
+        let API = new randomNumberAPI();
+        answers = await API.findNewNumbers();
         setPattern(answers);
       })();
       setRound(10);
@@ -31,7 +32,10 @@ const GameContainer = ({ }) => {
 
   return (
     <div className={styles['gameContainer']}>
-      <GameHistory past={pastGuesses} />
+      <GameHistory
+        past={pastGuesses}
+        pattern={pattern}
+      />
       <CurrentGuess
         newGame={startGame}
         round={round}
