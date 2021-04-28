@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './currentGuess.module.css'
 import Button from '../buttons/buttons'
 import Input from '../inputs/inputs'
