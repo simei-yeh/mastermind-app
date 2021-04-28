@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const baseURL = 'https://www.random.org/integers/';
 
-class randomNumberAPI {
+export default class randomNumberAPI {
   findNewNumbers() {
     return axios.get(baseURL, {
       params: {
@@ -35,5 +35,3 @@ class randomNumberAPI {
       })
   }
 }
-
-module.exports = randomNumberAPI;
