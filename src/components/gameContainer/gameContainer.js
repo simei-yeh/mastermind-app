@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './gameContainer.module.css';
 import GameHistory from '../gameHistory/gameHistory';
 import CurrentGuess from '../currentGuess/currentGuess';
-import randomNumberAPI from '../randomNumberGeneratorAPI'
+import randomNumberAPI from '../randomNumberAPI'
 
 const GameContainer = ({ }) => {
   const [startGame, setStartGame] = useState(true);
