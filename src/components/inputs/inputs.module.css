@@ -1,11 +1,19 @@
+
+.guesses{
+  display: inline-flex;
+  flex-direction: row;
+}
+
 .inputs {
+  flex: 0 0 25%;
+
   padding: 1em;
-  margin: 0.5vw;
+  margin: 0.5em;
   border: 1px black solid;
   box-sizing: border-box;
-  display: inline-block;
   border-radius: 50%;
   font-size: larger;
+  text-align: center;
 }
 
 .inputs:focus {

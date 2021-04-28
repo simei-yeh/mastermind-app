@@ -4,7 +4,7 @@ import GameHistory from '../gameHistory/gameHistory';
 import CurrentGuess from '../currentGuess/currentGuess';
 import randomNumberAPI from '../randomNumberAPI'
 
-const GameContainer = ({ }) => {
+const GameContainer = () => {
   const [startGame, setStartGame] = useState(true);
   const [pattern, setPattern] = useState(new Array(4).fill(''));
   const [pastGuesses, setPastGuesses] = useState([]);

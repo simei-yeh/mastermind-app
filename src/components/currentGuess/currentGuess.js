@@ -69,7 +69,7 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
       </div>
       {/* buttons to submit answers, continue game play after reviewing answer results, end game */}
       <div>
-        <Button id={`confirm`} show={newGame} callback={handleSubmit} text={`Submit to check answers`} />
+        {<Button id={`confirm`} show={newGame} callback={handleSubmit} text={`Submit to check answers`} />}
         <Button id={`continue`} show={newGame} callback={continueGame} text={`Continue`} />
         <Button id={`end`} show={newGame} callback={endGame} text={`End Game`} />
       </div>

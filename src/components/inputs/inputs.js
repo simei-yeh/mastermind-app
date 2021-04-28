@@ -3,7 +3,7 @@ import styles from './inputs.module.css'
 
 const Input = ({ show, callback, value, name }) => {
   return (
-    <>
+    <span className={styles['guesses']}>
       {show
         ? <input
             type="number"
@@ -15,7 +15,7 @@ const Input = ({ show, callback, value, name }) => {
         </input>
         : null
       }
-    </>
+    </span>
   )
 }
 
