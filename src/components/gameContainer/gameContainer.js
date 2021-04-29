@@ -3,6 +3,7 @@ import styles from './gameContainer.module.css';
 import GameHistory from '../gameHistory/gameHistory';
 import CurrentGuess from '../currentGuess/currentGuess';
 import randomNumberAPI from '../API/randomNumberAPI'
+import Modal from '../modal/modal'
 
 const GameContainer = () => {
   const [startGame, setStartGame] = useState(true);
@@ -27,7 +28,8 @@ const GameContainer = () => {
     if (round === 0) {
       setStartGame(false);
       setRound(null);
-      alert('Game over! Restart Game');
+      setWin(true);
+      // alert('Game over! Restart Game');
     }
   }, [round])
 
@@ -37,7 +39,6 @@ const GameContainer = () => {
         past={pastGuesses}
         pattern={pattern}
       />
-
       <CurrentGuess
         newGame={startGame}
         round={round}
@@ -48,6 +49,7 @@ const GameContainer = () => {
         endGame={() => { setRound(0) }}
         checkWin={() => { setWin(true)}}
       />
+      {win ? <Modal show={win && startGame} /> : null}
     </div>
   )
 }
