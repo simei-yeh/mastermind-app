@@ -1,5 +1,4 @@
 .header {
-  margin: 0.5em;
   box-sizing: border-box;
   box-shadow: 2px 2px 2px 1px rgba(231, 244, 252, 0.5);
   flex: 1 0 5%;
@@ -19,6 +18,8 @@
 }
 
 .entry-header {
+  flex-direction: column;
+  justify-content: space-evenly;
   box-shadow: none;
   font-size: larger;
 }
@@ -26,9 +27,11 @@
 .main-header {
   border: 1px solid darkgray;
   border-radius: 10px;
-  font-size: 6vw;
+  font-size: 3em;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 0.5em;
+  font-weight: bolder;
 }
 
 .sub-header {

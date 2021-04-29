@@ -21,4 +21,6 @@ const GameHistory = ({ past, pattern }) => {
   )
 }
 
+
+
 export default GameHistory;

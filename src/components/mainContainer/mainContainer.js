@@ -19,15 +19,19 @@ const MainContainer = ({ }) => {
         :
         <>
           <img src={Brain} className={styles['mainImage']} />
-          <Header message={`Welcome! Let's play Mastermind`} header={`entry-header`} />
-          <Button
-            text={`Click here to play!`}
-            show={true}
-            callback={() => { setEnter(true) }}
-          />
-          </>
+          <Header message={`Welcome! Let's play Mastermind`} header={`entry-header`}
+            callback={() => { setEnter(true) }}>
+            <div>
+              <Button
+                text={`Click here to play!`}
+                show={true}
+                callback={() => setEnter(true)}
+              />
+            </div>
+          </Header>
+        </>
       }
-      </div>
+    </div>
   )
 }
 
