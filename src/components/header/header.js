@@ -10,7 +10,7 @@ const Header = ({ status, children, message, header }) => {
       {header === 'main-header'
         ? <span className={styles['image-container']}><img src={Brain} /></span>
         : null}
-      <span>{`${message}${header === 'main-header' ? 's' : ''}`}</span>
+      <span>{`${message}`}</span>
       {header === 'main-header'
         ? <span className={styles['image-container']}><img src={Pinky} /></span>
         : null}
