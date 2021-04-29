@@ -3,8 +3,8 @@ import styles from './mainContainer.module.css'
 import Button from '../buttons/buttons'
 import Header from '../header/header'
 import GameContainer from '../gameContainer/gameContainer'
-import Brain from '../../brain.png'
-import PatBIntro from '../../patbIntro.MP3'
+import Brain from '../media/images/brain.png'
+import PatBIntro from '../media/sounds/patbIntro.MP3'
 
 const MainContainer = ({ }) => {
   const [enter, setEnter] = useState(true);

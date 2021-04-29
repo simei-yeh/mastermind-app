@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './header.module.css'
-import Pinky from '../../pinky.png'
-import Brain from '../../brain.png'
+import Pinky from '../media/images/pinky.png'
+import Brain from '../media/images/brain.png'
 import Button from '../buttons/buttons'
 
 const Header = ({ status, children, message, header }) => {
