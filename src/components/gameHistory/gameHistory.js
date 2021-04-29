@@ -7,13 +7,18 @@ const GameHistory = ({ past, pattern }) => {
     <div className={styles['gameHistory']}>
       <Header message={`Past Guesses`} header={`sub-header`} />
       <div>
+        <div className={`${styles['roundContainer']} ${styles['legend']}`}>
+          <span className={styles['correct']}>{`Correct place and number`}</span>
+          <span className={styles['partiallyCorrect']}>{`Incorrect place but correct number`}</span>
+          <span className={styles['incorrect']}>{`Incorrect place and number`}</span>
+        </div>
         {past.map((round, i) =>
           <div key={i} className={styles['roundContainer']}>
-          {round[0].map((r, i) =>
-            <span className={`${styles['guessContainer']} ${styles[round[1][i]]}`} >
-            <span key={i} className={styles['guess']}>{r}</span>
-            </span>
-          )}
+            {round[0].map((r, i) =>
+              <span className={`${styles['guessContainer']} ${styles[round[1][i]]}`} >
+                <span key={i} className={styles['guess']}>{r}</span>
+              </span>
+            )}
           </div>
         )}
       </div>

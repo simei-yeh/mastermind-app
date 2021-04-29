@@ -9,6 +9,7 @@ const GameContainer = () => {
   const [pattern, setPattern] = useState(new Array(4).fill(''));
   const [pastGuesses, setPastGuesses] = useState([]);
   const [round, setRound] = useState(null);
+  const [win, setWin] = useState(false);
 
   useEffect(() => {
     var answers;
@@ -36,6 +37,7 @@ const GameContainer = () => {
         past={pastGuesses}
         pattern={pattern}
       />
+
       <CurrentGuess
         newGame={startGame}
         round={round}
@@ -44,6 +46,7 @@ const GameContainer = () => {
         nextRound={() => { setRound(round - 1) }}
         submitGuess={(array) => {setPastGuesses([...pastGuesses, array])}}
         endGame={() => { setRound(0) }}
+        checkWin={() => { setWin(true)}}
       />
     </div>
   )

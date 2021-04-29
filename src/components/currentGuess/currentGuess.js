@@ -6,6 +6,7 @@ import Header from '../header/header'
 
 const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, endGame }) => {
   const [newGuesses, setNewGuesses] = useState({});
+  const [confirmContinue, setConfirmContinue] = useState(true);
 
   const handleInputChange = (e) => {
     const { name, value, onKeyDown  } = e.target;
@@ -26,6 +27,7 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
     let submission = Object.values(newGuesses);
     if (submission.length === pattern.length) {
       submitGuess([submission, checkGuessesCorrect(submission)]);
+      setConfirmContinue(false);
     } else {
       let missing = [];
       pattern.forEach((num, i) => (newGuesses[i] === undefined) ? missing.push(i+1) : null)
@@ -46,6 +48,7 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
   const continueGame = (e) => {
     setNewGuesses({});
     nextRound();
+    setConfirmContinue(true);
   }
 
   return (
@@ -54,7 +57,11 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
       {/* button to start game and note to indicate number of remaining rounds */}
       <div>
         <Button id={`start`} show={!newGame} callback={start} text={`Click play to begin`} />
-        {newGame ? <span>{round === 0 ? `End of Game` : `Rounds Remaining: ${round}`}</span> : null}
+        {newGame
+          ? <span className={styles['roundsNote']}>
+              {round === 0 ? `End of Game` : `Rounds Remaining: ${round}`}
+              </span>
+          : null}
       </div>
       <div>
         {pattern.map((num, i) =>
@@ -69,8 +76,8 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
       </div>
       {/* buttons to submit answers, continue game play after reviewing answer results, end game */}
       <div>
-        {<Button id={`confirm`} show={newGame} callback={handleSubmit} text={`Submit to check answers`} />}
-        <Button id={`continue`} show={newGame} callback={continueGame} text={`Continue`} />
+        {<Button id={`confirm`} show={newGame && confirmContinue} callback={handleSubmit} text={`Submit to check answers`} />}
+        <Button id={`continue`} show={newGame && !confirmContinue} callback={continueGame} text={`Continue`} />
         <Button id={`end`} show={newGame} callback={endGame} text={`End Game`} />
       </div>
     </div>
