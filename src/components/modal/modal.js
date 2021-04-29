@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import styles from './modals.module.css';
-import Carousel from '../carousel/carousel';
-import Button from '../button/button';
+import styles from './modal.module.css';
+import Button from '../buttons/buttons';
 
 const Modal= ({ show, onClose, submission }) => {
   const [isBrowser, setIsBrowser] = useState(false);
@@ -31,9 +30,6 @@ const Modal= ({ show, onClose, submission }) => {
           />
         </div>
         <div className={styles['modal-body']}>
-          <Carousel
-            submission={submission}
-          />
         </div>
       </div>
     </div>
