@@ -5,7 +5,7 @@ import Input from '../inputs/inputs'
 import Header from '../header/header'
 
 const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, endGame }) => {
-  const [newGuesses, setNewGuesses] = useState({});
+  const [newGuesses, setNewGuesses] = useState('');
   const [confirmContinue, setConfirmContinue] = useState(true);
 
   const handleInputChange = (e) => {
@@ -18,7 +18,7 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
       alert('Enter valid number')
 
     } else {
-      setNewGuesses({ ...newGuesses, [name]: `${newValue}` });
+      setNewGuesses(value);
       console.log(newGuesses)
     }
   }
@@ -64,20 +64,21 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
           : null}
       </div>
       <div>
-        {pattern.map((num, i) =>
+        <div>
           <Input
+            callback={handleInputChange} />
+        </div>
+        {pattern.split('').map((num, i) =>
+          <div
             key={i}
             name={i}
             num={num}
-            show={newGame}
-            value={newGuesses[i] | ''}
-            callback={handleInputChange}
-          />)}
+            >
+              {newGuesses[i] | ''}
+          </div>)}
       </div>
       {/* buttons to submit answers, continue game play after reviewing answer results, end game */}
       <div>
-        {<Button id={`confirm`} show={newGame && confirmContinue} callback={handleSubmit} text={`Submit to check answers`} />}
-        <Button id={`continue`} show={newGame && !confirmContinue} callback={continueGame} text={`Continue`} />
         <Button id={`end`} show={newGame} callback={endGame} text={`End Game`} />
       </div>
     </div>

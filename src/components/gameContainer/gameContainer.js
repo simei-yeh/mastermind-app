@@ -7,7 +7,7 @@ import Modal from '../modal/modal'
 
 const GameContainer = () => {
   const [startGame, setStartGame] = useState(true);
-  const [pattern, setPattern] = useState(new Array(4).fill(''));
+  const [pattern, setPattern] = useState('');
   const [pastGuesses, setPastGuesses] = useState([]);
   const [round, setRound] = useState(null);
   const [win, setWin] = useState(false);

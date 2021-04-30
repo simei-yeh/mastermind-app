@@ -20,7 +20,7 @@ export default class randomNumberAPI {
       })
       .then((data) => {
         console.log(data);
-        return data.replace(/[\n]/g,'').split('');
+        return data.replace(/[\n]/g,'');
       })
       .catch((err) => {
         if (err.response) {
