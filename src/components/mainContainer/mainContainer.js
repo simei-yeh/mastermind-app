@@ -23,7 +23,7 @@ const MainContainer = ({ }) => {
           <Header message={`Mastermind`} header={`main-header`} >
           </Header>
           <GameContainer />
-          <audio controls ref={musicRef}>
+          <audio ref={musicRef}>
               <source src={PatBIntro} type="audio/mpeg" />
                 Your browser does not support the audio element.
             </audio>
