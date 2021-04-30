@@ -21,10 +21,9 @@
 }
 
 .entry-header {
-  flex-direction: column;
-  justify-content: space-evenly;
   box-shadow: none;
-  font-size: larger;
+  font-size: x-large;
+  margin: 1em;
 }
 
 .main-header {

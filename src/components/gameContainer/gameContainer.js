@@ -35,20 +35,21 @@ const GameContainer = () => {
 
   return (
     <div className={styles['gameContainer']}>
-      <GameHistory
-        past={pastGuesses}
-        pattern={pattern}
-      />
       <CurrentGuess
         newGame={startGame}
         round={round}
         pattern={pattern}
         start={() => { setStartGame(true) }}
         nextRound={() => { setRound(round - 1) }}
-        submitGuess={(array) => {setPastGuesses([...pastGuesses, array])}}
+        submitGuess={(array) => { setPastGuesses([...pastGuesses, array]) }}
         endGame={() => { setRound(0) }}
-        checkWin={() => { setWin(true)}}
+        checkWin={() => { setWin(true) }}
       />
+      <GameHistory
+        past={pastGuesses}
+        pattern={pattern}
+      />
+
       {win ? <Modal show={win && startGame} /> : null}
     </div>
   )

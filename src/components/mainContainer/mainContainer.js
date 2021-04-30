@@ -17,7 +17,7 @@ const MainContainer = ({ }) => {
   }, [enter])
 
   return (
-    <div className={styles['mainContainer']}>
+    <div className={`${styles['mainContainer']} ${styles[enter]}`}>
       {enter
         ? <>
           <Header message={`Mastermind`} header={`main-header`} >
@@ -29,19 +29,17 @@ const MainContainer = ({ }) => {
             </audio>
         </>
         :
-        <>
-          <img src={Brain} className={styles['mainImage']} alt="" />
+        <div className={styles['mainImage']}>
+          <img src={Brain}  alt="" />
           <Header message={`Let's play Mastermind`} header={`entry-header`}
             callback={() => { setEnter(true) }}>
-            <div>
+          </Header>
               <Button
                 text={`Click here to play!`}
                 show={true}
                 callback={() => setEnter(true)}
               />
-            </div>
-          </Header>
-        </>
+        </div>
       }
         </div>
   )

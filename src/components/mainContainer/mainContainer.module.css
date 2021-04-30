@@ -1,6 +1,5 @@
 .mainContainer {
   margin: auto;
-  border: 2px white solid;
   background-color: white;
   border-radius: 15px;
   height: 90%;
@@ -14,11 +13,13 @@
   overflow: auto;
 }
 
-.mainImage {
-  height: auto;
-  padding: 0 20%;
+.false {
+  background-color: black;
 }
 
-.entryButtonContainer {
-  margin: 0 auto;
+.mainImage {
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
