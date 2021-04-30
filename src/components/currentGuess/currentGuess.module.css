@@ -1,6 +1,5 @@
 .currentGuess {
   flex: 1 1;
-  border-left: 1px solid darkgray;
   padding: 1em;
   box-sizing: border-box;
 }

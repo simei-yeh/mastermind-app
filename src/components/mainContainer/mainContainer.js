@@ -7,7 +7,7 @@ import Brain from '../media/images/brain.png'
 import PatBIntro from '../media/sounds/patbIntro.MP3'
 
 const MainContainer = ({ }) => {
-  const [enter, setEnter] = useState(true);
+  const [enter, setEnter] = useState(false);
   const musicRef = useRef()
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const MainContainer = ({ }) => {
         :
         <>
           <img src={Brain} className={styles['mainImage']} alt="" />
-          <Header message={`Welcome! Let's play Mastermind`} header={`entry-header`}
+          <Header message={`Let's play Mastermind`} header={`entry-header`}
             callback={() => { setEnter(true) }}>
             <div>
               <Button

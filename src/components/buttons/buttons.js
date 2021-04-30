@@ -5,11 +5,11 @@ import styles from './buttons.module.css'
   return (
     <>
     {show
-      ? <div className={`${styles['buttons']}
+      ? <span className={`${styles['buttons']}
       ${styles[id]}`}
           onClick={callback} >
          {text}
-        </div>
+        </span>
       : null
     }
     </>

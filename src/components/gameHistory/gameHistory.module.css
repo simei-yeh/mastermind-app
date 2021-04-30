@@ -20,6 +20,7 @@
 }
 
 .legend-items{
+  border-radius: 5px;
   flex: 1 1;
   margin: 0 0.25em;
 }
