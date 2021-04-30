@@ -1,11 +1,13 @@
 import React from 'react';
 import styles from './buttons.module.css'
 
- const Button = ({ text, show, callback }) => {
+ const Button = ({ text, id, show, callback }) => {
   return (
     <>
     {show
-      ? <div className={styles['buttons']} onClick={callback} >
+      ? <div className={`${styles['buttons']}
+      ${styles[id]}`}
+          onClick={callback} >
          {text}
         </div>
       : null

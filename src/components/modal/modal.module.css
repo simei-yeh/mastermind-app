@@ -12,22 +12,12 @@
 }
 
 .modal-container {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
   max-width: 767px;
-  height: 60%;
-  border-radius: 0.5em;
-  background-color: white;
-  padding: 1.5em;
 }
 
 
 
 .modal-body {
   margin: auto;
-  justify-content: center;
-  height: 95%;
   box-sizing: border-box;
 }
-

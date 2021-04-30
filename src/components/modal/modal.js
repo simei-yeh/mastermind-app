@@ -30,19 +30,19 @@ const Modal= ({ show, onClose, win  }) => {
   const newModal = show ? (
     <div className={styles['modal']}>
       <div className={styles['modal-container']}>
-        <div className={styles['modal-body']}>
           <Button
             show={true}
             callback={handleCloseClick}
             text="Close"
             id="close"
           />
+        <div className={styles['modal-body']}>
             <img src={win ? WinImage : LoseImage} alt="modal" />
-            <audio controls ref={musicRef}>
-              <source src={win ? WinJingle : LoseJingle} type="audio/mpeg" />
+          </div>
+            <audio ref={musicRef}>
+              <source src={win ? WinJingle : LoseJingle} type="audio/mpeg"/>
                 Your browser does not support the audio element.
             </audio>
-          </div>
       </div>
     </div>
   ) : null;
