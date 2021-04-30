@@ -6,14 +6,15 @@
   padding: 0.5em;
   border-radius: 5px;
   border: 1px solid red;
+  display: inline-block;
 }
 
 .close {
   float: right;
-
   font: larger;
   background-color: white;
-
-
 }
 
+.end {
+  margin: 2em;
+}

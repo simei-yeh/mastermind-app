@@ -7,10 +7,11 @@ import Modal from '../modal/modal'
 
 const GameContainer = () => {
   const [startGame, setStartGame] = useState(true);
-  const [pattern, setPattern] = useState('');
+  const [pattern, setPattern] = useState('    ');
   const [pastGuesses, setPastGuesses] = useState([]);
   const [round, setRound] = useState(null);
   const [win, setWin] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     var answers;
@@ -29,6 +30,7 @@ const GameContainer = () => {
       setStartGame(false);
       setRound(null);
       setWin(true);
+      setShowModal(true);
       // alert('Game over! Restart Game');
     }
   }, [round])
@@ -50,7 +52,7 @@ const GameContainer = () => {
         pattern={pattern}
       />
 
-      {win ? <Modal show={win && startGame} /> : null}
+      {win ? <Modal show={showModal} onClose={() => setShowModal(false)} win={win} /> : null}
     </div>
   )
 }

@@ -6,31 +6,23 @@ import Header from '../header/header'
 
 const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, endGame }) => {
   const [newGuesses, setNewGuesses] = useState('');
-  const [confirmContinue, setConfirmContinue] = useState(true);
 
   const handleInputChange = (e) => {
-    const { name, value, onKeyDown  } = e.target;
+    const { value } = e.target;
     // need to validate guess as numbe && within range
     let newValue = parseInt(value);
 
-    if (isNaN(newValue) || newValue > 7 || newValue < 0) {
-      console.log(onKeyDown )
-      alert('Enter valid number')
+    setNewGuesses(value);
+    console.log(newGuesses)
 
-    } else {
-      setNewGuesses(value);
-      console.log(newGuesses)
-    }
   }
 
   const handleSubmit = (e) => {
-    let submission = Object.values(newGuesses);
-    if (submission.length === pattern.length) {
-      submitGuess([submission, checkGuessesCorrect(submission)]);
-      setConfirmContinue(false);
+    if (newGuesses.length === pattern.length) {
+      submitGuess([newGuesses, checkGuessesCorrect(newGuesses)]);
     } else {
       let missing = [];
-      pattern.forEach((num, i) => (newGuesses[i] === undefined) ? missing.push(i+1) : null)
+      pattern.split('').forEach((num, i) => (newGuesses[i] === undefined) ? missing.push(i + 1) : null)
       alert(`Enter remaining numbers at location(s) ${missing}`)
     }
   }
@@ -38,9 +30,9 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
   const checkGuessesCorrect = (guesses) => {
     let answers = []
     for (let i = 0; i < guesses.length; i++) {
-      if (guesses[i] === pattern[i]) {answers.push('correct');}
-      else if (pattern.includes(guesses[i])) {answers.push('partiallyCorrect');}
-      else {answers.push('incorrect');}
+      if (guesses[i] === pattern[i]) { answers.push('correct'); }
+      else if (pattern.includes(guesses[i])) { answers.push('partiallyCorrect'); }
+      else { answers.push('incorrect'); }
     }
     return answers;
   }
@@ -48,38 +40,38 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
   const continueGame = (e) => {
     setNewGuesses({});
     nextRound();
-    setConfirmContinue(true);
   }
 
   return (
     <div className={styles['currentGuess']}>
       <Header message={`Current Guesses`} header={`sub-header`} />
-      {/* button to start game and note to indicate number of remaining rounds */}
       <div>
-        <Button id={`start`} show={!newGame} callback={start} text={`Click play to begin`} />
         {newGame
           ? <span className={styles['roundsNote']}>
-              {round === 0 ? `End of Game` : `Rounds Remaining: ${round}`}
-              </span>
+            {round === 0 ? `End of Game` : `Rounds Remaining: ${round}`}
+          </span>
           : null}
       </div>
-      <div>
+      <div className={styles['inputContainer']}>
         <div>
           <Input
+            show={newGame}
             callback={handleInputChange} />
         </div>
         {pattern.split('').map((num, i) =>
           <div
+            className={styles['numbersDisplay']}
             key={i}
             name={i}
             num={num}
-            >
-              {newGuesses[i] | ''}
+          >
+            {newGuesses[i] | ''}
           </div>)}
       </div>
-      {/* buttons to submit answers, continue game play after reviewing answer results, end game */}
+      {/* buttons to start and end game */}
       <div>
         <Button id={`end`} show={newGame} callback={endGame} text={`End Game`} />
+        <Button id={`start`} show={!newGame} callback={start} text={`Start New Game`} />
       </div>
     </div>
   )

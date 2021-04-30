@@ -17,7 +17,7 @@ const Modal= ({ show, onClose, win  }) => {
 
   useEffect(() => {
     if (show) {
-      musicRef.current.play();
+      // musicRef.current.play();
     }
   }, [show])
 

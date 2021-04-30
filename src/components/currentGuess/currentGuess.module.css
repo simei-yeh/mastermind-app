@@ -4,6 +4,25 @@
   box-sizing: border-box;
 }
 
-.correct {
+.roundsNote {
+  display: inline-block;
+  margin: 2em;
+  font-size: larger;
+}
 
+.inputContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.numbersDisplay {
+  height: 4em;
+  width: 4em;
+  padding: 1em;
+  margin: 0.5em;
+  border: 1px black solid;
+  box-sizing: border-box;
+  border-radius: 50%;
+  font-size: larger;
+  text-align: center;
 }
