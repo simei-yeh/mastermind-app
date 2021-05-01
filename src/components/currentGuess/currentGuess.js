@@ -10,7 +10,6 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
   const handleInputChange = (e) => {
     const { value } = e.target;
     setNewGuesses(value);
-    console.log(newGuesses)
   }
 
   useEffect(() => {
@@ -22,7 +21,6 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
         checkWin();
         endGame();
       }
-      console.log('handle submit')
     }
   }, [newGuesses])
 
