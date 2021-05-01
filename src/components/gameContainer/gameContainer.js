@@ -31,7 +31,6 @@ const GameContainer = () => {
       setRound(null);
       setWin(true);
       setShowModal(true);
-      // alert('Game over! Restart Game');
     }
   }, [round])
 
@@ -43,7 +42,7 @@ const GameContainer = () => {
         pattern={pattern}
         start={() => { setStartGame(true) }}
         nextRound={() => { setRound(round - 1) }}
-        submitGuess={(array) => { setPastGuesses([...pastGuesses, array]) }}
+        submitGuess={(str) => { setPastGuesses([...pastGuesses, str]) }}
         endGame={() => { setRound(0) }}
         checkWin={() => { setWin(true) }}
       />
