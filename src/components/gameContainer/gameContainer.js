@@ -12,6 +12,12 @@ const GameContainer = () => {
   const [round, setRound] = useState(null);
   const [win, setWin] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [score, setHistoryScore] = useState('');
+
+  useEffect(() => {
+    let score = localStorage.getItem('mastermind') || {wins: 0, games: 0};
+    setHistoryScore(score)
+  }, [])
 
   useEffect(() => {
     var answers;
@@ -33,6 +39,13 @@ const GameContainer = () => {
       setStartGame(false);
       setRound(null);
       setShowModal(true);
+      let score = JSON.parse(localStorage.getItem('mastermind')) || {wins: 0, games: 0};
+      if (win) {
+        localStorage.setItem('mastermind', JSON.stringify({wins: ++score['wins'], games: ++score['games']}));
+      } else {
+        localStorage.setItem('mastermind', JSON.stringify({wins: score['wins'], games: ++score['games']}));
+      }
+
     }
   }, [round])
 

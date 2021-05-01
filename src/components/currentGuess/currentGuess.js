@@ -56,7 +56,7 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
           </div>
           {pattern.split('').map((num, i) =>
             <div
-              className={styles['numbersDisplay']}
+              className={`${styles['numbersDisplay']}`}
               key={i}
               name={i}
               num={num}
