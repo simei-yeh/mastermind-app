@@ -7,17 +7,18 @@ import LoseImage from '../media/images/try_again_brain.png'
 import LoseJingle from '../media/sounds/brain_AYPWIP.MP3'
 import WinJingle from '../media/sounds/brain_yes.MP3'
 
-const Modal= ({ show, onClose, win  }) => {
-  const [isBrowser, setIsBrowser] = useState(false);
+const Modal = ({ show, onClose, win }) => {
   const musicRef = useRef(null);
 
   useEffect(() => {
-    setIsBrowser(true);
-  }, []);
-
-  useEffect(() => {
     if (show) {
-      // musicRef.current.play();
+      musicRef.current.play();
+    }
+    if (win) {
+      window.confetti({
+        particleCount: 300,
+        spread: 200
+      });
     }
   }, [show])
 
@@ -30,24 +31,24 @@ const Modal= ({ show, onClose, win  }) => {
   const newModal = show ? (
     <div className={styles['modal']} onClick={handleCloseClick}>
       <div className={styles['modal-container']}>
-          <Button
-            show={true}
-            callback={handleCloseClick}
-            text="Close"
-            id="close"
-          />
+        <Button
+          show={true}
+          callback={handleCloseClick}
+          text="Close"
+          id="close"
+        />
         <div className={styles['modal-body']}>
-            <img src={win ? WinImage : LoseImage} alt="modal" />
-          </div>
-            <audio ref={musicRef}>
-              <source src={win ? WinJingle : LoseJingle} type="audio/mpeg"/>
+          <img src={win ? WinImage : LoseImage} alt="modal" />
+        </div>
+        <audio ref={musicRef}>
+          <source src={win ? WinJingle : LoseJingle} type="audio/mpeg" />
                 Your browser does not support the audio element.
             </audio>
       </div>
     </div>
   ) : null;
 
-  if (isBrowser) {
+  if (show) {
     return ReactDOM.createPortal(
       newModal,
       document.getElementById('modal-overlay')
