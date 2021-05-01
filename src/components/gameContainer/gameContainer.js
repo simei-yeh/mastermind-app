@@ -23,6 +23,7 @@ const GameContainer = () => {
       })();
       setRound(10);
       setPastGuesses([]);
+      setWin(false);
     }
   }, [startGame])
 
