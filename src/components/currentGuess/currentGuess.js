@@ -46,25 +46,27 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
           </span>
           : null}
       </div>
-      <div className={styles['inputDisplayContainer']}>
-        <div className={styles['inputContainer']}>
-          <Input
-            show={newGame}
-            callback={handleInputChange}
-            value={newGuesses} />
+      {newGame
+        ? <div className={styles['inputDisplayContainer']}>
+          <div className={styles['inputContainer']}>
+            <Input
+              show={newGame}
+              callback={handleInputChange}
+              value={newGuesses} />
+          </div>
+          {pattern.split('').map((num, i) =>
+            <div
+              className={styles['numbersDisplay']}
+              key={i}
+              name={i}
+              num={num}
+            >
+              <span>
+                {newGuesses[i] | ''}
+              </span>
+            </div>)}
         </div>
-        {pattern.split('').map((num, i) =>
-          <div
-            className={styles['numbersDisplay']}
-            key={i}
-            name={i}
-            num={num}
-          >
-            <span>
-              {newGuesses[i] | ''}
-            </span>
-          </div>)}
-      </div>
+        : null}
       {/* buttons to start and end game */}
       <div>
         <Button id={`end`} show={newGame} callback={endGame} text={`End Game`} />
