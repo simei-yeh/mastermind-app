@@ -15,7 +15,7 @@ const GameContainer = () => {
   const [score, setHistoryScore] = useState('');
 
   useEffect(() => {
-    let score = localStorage.getItem('mastermind') || {wins: 0, games: 0};
+    let score = JSON.parse(localStorage.getItem('mastermind')) || {wins: 0, games: 0};
     setHistoryScore(score)
   }, [])
 
@@ -39,13 +39,12 @@ const GameContainer = () => {
       setStartGame(false);
       setRound(null);
       setShowModal(true);
-      let score = JSON.parse(localStorage.getItem('mastermind')) || {wins: 0, games: 0};
       if (win) {
-        localStorage.setItem('mastermind', JSON.stringify({wins: ++score['wins'], games: ++score['games']}));
+        setHistoryScore({wins: ++score['wins'], games: ++score['games']});
       } else {
-        localStorage.setItem('mastermind', JSON.stringify({wins: score['wins'], games: ++score['games']}));
+        setHistoryScore({wins: score['wins'], games: ++score['games']});
       }
-
+      localStorage.setItem('mastermind', JSON.stringify(score));
     }
   }, [round])
 
