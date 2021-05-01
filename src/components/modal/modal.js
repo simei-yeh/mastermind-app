@@ -28,7 +28,7 @@ const Modal= ({ show, onClose, win  }) => {
   };
 
   const newModal = show ? (
-    <div className={styles['modal']}>
+    <div className={styles['modal']} onClick={handleCloseClick}>
       <div className={styles['modal-container']}>
           <Button
             show={true}

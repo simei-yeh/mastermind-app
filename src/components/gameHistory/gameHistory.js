@@ -8,7 +8,7 @@ const GameHistory = ({ past, pattern }) => {
       <Header message={`Past Guesses`} header={`sub-header`} />
       <div>
         <div className={`${styles['roundContainer']} ${styles['legend']}`}>
-          <span className={`${styles['correct']} ${styles['legend-items']}`}>{`Correct`}</span>
+          <span className={`${styles['correct']} ${styles['legend-items']}`}>{`Correct `}</span>
           <span className={`${styles['partiallyCorrect']} ${styles['legend-items']}`} > {`Correct number`}</span>
           <span className={`${styles['incorrect']} ${styles['legend-items']}`} > {`Incorrect`}</span>
         </div>

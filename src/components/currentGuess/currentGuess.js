@@ -15,15 +15,16 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
     setNewGuesses(value);
     console.log(newGuesses)
 
+    if (newGuesses.length === pattern.length) {
+      handleSubmit();
+    }
   }
 
   const handleSubmit = (e) => {
     if (newGuesses.length === pattern.length) {
       submitGuess([newGuesses, checkGuessesCorrect(newGuesses)]);
     } else {
-      let missing = [];
-      pattern.split('').forEach((num, i) => (newGuesses[i] === undefined) ? missing.push(i + 1) : null)
-      alert(`Enter remaining numbers at location(s) ${missing}`)
+      alert(`Enter remaining numbers(s)`)
     }
   }
 
@@ -38,7 +39,7 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
   }
 
   const continueGame = (e) => {
-    setNewGuesses({});
+    setNewGuesses('');
     nextRound();
   }
 
@@ -65,7 +66,9 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
             name={i}
             num={num}
           >
+              <span>
             {newGuesses[i] | ''}
+            </span>
           </div>)}
       </div>
       {/* buttons to start and end game */}

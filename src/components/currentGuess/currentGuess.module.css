@@ -24,5 +24,7 @@
   box-sizing: border-box;
   border-radius: 50%;
   font-size: larger;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
