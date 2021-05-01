@@ -13,11 +13,14 @@
 .inputDisplayContainer {
   display: flex;
   justify-content: space-evenly;
+  position: relative;
 }
 
 .inputContainer {
   position: absolute;
   display: inline-flex;
+  height: 100%;
+  width: 100%;
 }
 
 .numbersDisplay {
