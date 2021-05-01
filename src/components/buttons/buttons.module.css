@@ -15,7 +15,9 @@
   background-color: white;
 }
 
-.end {
-  margin: 2em;
+.end, .start {
+  margin: 3em;
 }
+
+
 
