@@ -10,9 +10,14 @@
   font-size: larger;
 }
 
-.inputContainer {
+.inputDisplayContainer {
   display: flex;
   justify-content: space-evenly;
+}
+
+.inputContainer {
+  position: absolute;
+  display: inline-flex;
 }
 
 .numbersDisplay {

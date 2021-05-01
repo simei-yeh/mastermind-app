@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './currentGuess.module.css'
 import Button from '../buttons/buttons'
 import Input from '../inputs/inputs'
@@ -9,24 +9,19 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
 
   const handleInputChange = (e) => {
     const { value } = e.target;
-    // need to validate guess as numbe && within range
-    let newValue = parseInt(value);
-
     setNewGuesses(value);
-    console.log(newGuesses)
 
-    if (newGuesses.length === pattern.length) {
-      handleSubmit();
-    }
+    console.log(newGuesses)
   }
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
     if (newGuesses.length === pattern.length) {
       submitGuess([newGuesses, checkGuessesCorrect(newGuesses)]);
-    } else {
-      alert(`Enter remaining numbers(s)`)
+      setNewGuesses('');
+      nextRound();
+      console.log('handle submit')
     }
-  }
+  }, [newGuesses])
 
   const checkGuessesCorrect = (guesses) => {
     let answers = []
@@ -36,11 +31,6 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
       else { answers.push('incorrect'); }
     }
     return answers;
-  }
-
-  const continueGame = (e) => {
-    setNewGuesses('');
-    nextRound();
   }
 
   return (
@@ -53,11 +43,12 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
           </span>
           : null}
       </div>
-      <div className={styles['inputContainer']}>
-        <div>
+      <div className={styles['inputDisplayContainer']}>
+        <div className={styles['inputContainer']}>
           <Input
             show={newGame}
-            callback={handleInputChange} />
+            callback={handleInputChange}
+            value={newGuesses} />
         </div>
         {pattern.split('').map((num, i) =>
           <div
@@ -66,8 +57,8 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
             name={i}
             num={num}
           >
-              <span>
-            {newGuesses[i] | ''}
+            <span>
+              {newGuesses[i] | ''}
             </span>
           </div>)}
       </div>
