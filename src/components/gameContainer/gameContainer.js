@@ -22,14 +22,15 @@ const GameContainer = () => {
         setPattern(answers);
       })();
       setRound(10);
+      setPastGuesses([]);
     }
   }, [startGame])
 
   useEffect(() => {
     if (round === 0) {
+      console.log('last round')
       setStartGame(false);
       setRound(null);
-      setWin(true);
       setShowModal(true);
     }
   }, [round])
@@ -51,7 +52,7 @@ const GameContainer = () => {
         pattern={pattern}
       />
 
-      {win ? <Modal show={showModal} onClose={() => setShowModal(false)} win={win} /> : null}
+      {showModal ? <Modal show={showModal} onClose={() => setShowModal(false)} win={win} /> : null}
     </div>
   )
 }

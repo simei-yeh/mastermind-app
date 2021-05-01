@@ -4,13 +4,12 @@ import Button from '../buttons/buttons'
 import Input from '../inputs/inputs'
 import Header from '../header/header'
 
-const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, endGame }) => {
+const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, endGame, checkWin }) => {
   const [newGuesses, setNewGuesses] = useState('');
 
   const handleInputChange = (e) => {
     const { value } = e.target;
     setNewGuesses(value);
-
     console.log(newGuesses)
   }
 
@@ -19,6 +18,10 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
       submitGuess([newGuesses, checkGuessesCorrect(newGuesses)]);
       setNewGuesses('');
       nextRound();
+      if (newGuesses === pattern) {
+        checkWin();
+        endGame();
+      }
       console.log('handle submit')
     }
   }, [newGuesses])
