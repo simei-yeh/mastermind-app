@@ -14,7 +14,7 @@ const GameHistory = ({ past, pattern }) => {
         </div>
         {past.map((round, i) =>
           <div key={i} className={styles['roundContainer']}>
-            {round[0].map((r, i) =>
+            {round[0].split('').map((r, i) =>
               <span className={`${styles['guessContainer']} ${styles[round[1][i]]}`} >
                 <span key={i} className={styles['guess']}>{r}</span>
               </span>
