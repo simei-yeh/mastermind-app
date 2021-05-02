@@ -1,4 +1,4 @@
-# Deployment server
+# Deployed Application
 
 This project is deployed at [https://mastermind-app.vercel.app/](https://mastermind-app.vercel.app/)
 
