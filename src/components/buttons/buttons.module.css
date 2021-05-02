@@ -21,11 +21,8 @@
 }
 
 .audio {
-  position: absolute;
   animation: audioBlink 1s linear;
   animation-iteration-count: 3;
-  top: 95%;
-  left: 0%;
   display: flex;
 }
 
@@ -48,8 +45,6 @@
   align-items: middle;
 }
 
-.clear {
-  position: absolute;
-  top: 90%;
-  left: 0%;
+.audio, .clear {
+  margin: 0.3em 0;
 }

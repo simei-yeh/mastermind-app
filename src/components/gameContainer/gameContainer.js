@@ -82,23 +82,23 @@ const GameContainer = ({ enter }) => {
         past={pastGuesses}
         pattern={pattern}
       />
-      <div className={styles['totalHistory']}>
+      <div className={styles['gameConfigs']}>
         <span>{`Total Games: ${score['games'] || 0}`}</span>
         <span>{`Games Won: ${score['wins'] || 0}`}</span>
+        <Button
+          show={true}
+          callback={() => { localStorage.clear(); setHistoryScore({ wins: 0, games: 0 }); }}
+          id={'clear'}
+          text={`Clear all history`}
+        />
+        <Button
+          show={true}
+          callback={() => setAudio(!audio)}
+          id={'audio'}
+          text={audio ? 'Turn off audio' : 'Turn on audio'}
+          audio={audio}
+        />
       </div>
-      <Button
-        show={true}
-        callback={() => {localStorage.clear(); setHistoryScore({ wins: 0, games: 0 });}}
-        id={'clear'}
-        text={`Clear all history`}
-      />
-      <Button
-        show={true}
-        callback={() => setAudio(!audio)}
-        id={'audio'}
-        text={audio ? 'Turn off audio' : 'Turn on audio'}
-        audio={audio}
-      />
       {showModal ? <Modal audio={audio} show={showModal} onClose={() => setShowModal(false)} win={win} /> : null}
     </div>
   )

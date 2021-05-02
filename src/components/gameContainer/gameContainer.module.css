@@ -6,7 +6,7 @@
   position: relative;
 }
 
-.totalHistory {
+.gameConfigs {
   position: absolute;
   top: 85%;
   display: flex;
