@@ -22,8 +22,6 @@
 .audio {
   animation: audioBlink 1s linear;
   animation-iteration-count: 2;
-  display: flex;
-  justify-content: center;
 }
 
 @keyframes audioBlink {
@@ -47,4 +45,6 @@
 
 .audio, .clear {
   margin: 0.3em 0;
+  display: flex;
+  justify-content: center;
 }
