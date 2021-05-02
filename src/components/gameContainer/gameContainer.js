@@ -13,6 +13,7 @@ const GameContainer = () => {
   const [win, setWin] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [score, setHistoryScore] = useState('');
+  const [audio, setAudio] = useState(true);
 
   useEffect(() => {
     let score = JSON.parse(localStorage.getItem('mastermind')) || {wins: 0, games: 0};
@@ -65,7 +66,7 @@ const GameContainer = () => {
         pattern={pattern}
       />
 
-      {showModal ? <Modal show={showModal} onClose={() => setShowModal(false)} win={win} /> : null}
+      {showModal ? <Modal audio={audio} show={showModal} onClose={() => setShowModal(false)} win={win} /> : null}
     </div>
   )
 }

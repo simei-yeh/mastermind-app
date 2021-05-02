@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './inputs.module.css'
 
-const Input = ({ show, callback, value, name }) => {
+const Input = React.forwardRef(({ show, callback, value, name }, ref) => {
   return (
     <>
       {show
@@ -11,12 +11,13 @@ const Input = ({ show, callback, value, name }) => {
             onChange={callback}
             name={name}
             value={value}
+            ref={ref}
             >
         </input>
         : null
       }
     </>
   )
-}
+})
 
 export default Input;

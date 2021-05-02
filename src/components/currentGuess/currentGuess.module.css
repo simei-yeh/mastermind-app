@@ -38,6 +38,13 @@
   justify-content: center;
 }
 
-.numbersDisplay:focus {
+
+.numbersDisplay.filled {
+  background-color: black;
+  color: white;
+}
+
+.numbersDisplay.focused {
   background-color: white;
+  color: black;
 }

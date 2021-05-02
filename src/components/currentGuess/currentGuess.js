@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './currentGuess.module.css'
 import Button from '../buttons/buttons'
 import Input from '../inputs/inputs'
@@ -6,6 +6,7 @@ import Header from '../header/header'
 
 const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, endGame, checkWin }) => {
   const [newGuesses, setNewGuesses] = useState('');
+  const numberInput = useRef(null);
 
   const handleInputChange = (e) => {
     const { value } = e.target;
@@ -40,7 +41,7 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
       <div>
         {newGame
           ? <span className={styles['roundsNote']}>
-            {round === 0 ? `End of Game` : `Rounds Remaining: ${round}`}
+            {`Rounds Remaining: ${round}`}
           </span>
           : null}
       </div>
@@ -50,11 +51,14 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
             <Input
               show={newGame}
               callback={handleInputChange}
-              value={newGuesses} />
+              value={newGuesses}
+              ref={numberInput} />
           </div>
           {pattern.split('').map((num, i) =>
             <div
-              className={`${styles['numbersDisplay']}`}
+              className={`${styles['numbersDisplay']}
+              ${newGuesses.length >= i + 1 ? styles['filled'] : null }
+              ${newGuesses.length === i  && numberInput.current === document.activeElement ? styles['focused'] : null}`}
               key={i}
               name={i}
               num={num}
@@ -67,7 +71,7 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
         : null}
       {/* buttons to start and end game */}
       <div>
-        <Button id={`end`} show={newGame} callback={endGame} text={`End Game`} />
+        <Button id={`end`} show={newGame} callback={() => {endGame(); setNewGuesses('');}} text={`End Game`} />
         <Button id={`start`} show={!newGame} callback={start} text={`Start New Game`} />
       </div>
     </div>
