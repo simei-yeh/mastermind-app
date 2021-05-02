@@ -7,11 +7,11 @@ import LoseImage from '../media/images/try_again_brain.png'
 import LoseJingle from '../media/sounds/brain_AYPWIP.MP3'
 import WinJingle from '../media/sounds/brain_yes.MP3'
 
-const Modal = ({ show, onClose, win }) => {
+const Modal = ({ show, onClose, win, audio }) => {
   const musicRef = useRef(null);
 
   useEffect(() => {
-    if (show) {
+    if (show && audio) {
       musicRef.current.play();
     }
     if (win) {
@@ -40,10 +40,12 @@ const Modal = ({ show, onClose, win }) => {
         <div className={styles['modal-body']}>
           <img src={win ? WinImage : LoseImage} alt="modal" />
         </div>
-        <audio ref={musicRef}>
+        {audio
+          ? <audio ref={musicRef}>
           <source src={win ? WinJingle : LoseJingle} type="audio/mpeg" />
                 Your browser does not support the audio element.
             </audio>
+          : null}
       </div>
     </div>
   ) : null;

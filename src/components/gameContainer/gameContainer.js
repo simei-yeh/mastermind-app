@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './gameContainer.module.css';
 import GameHistory from '../gameHistory/gameHistory';
 import CurrentGuess from '../currentGuess/currentGuess';
-import randomNumberAPI from '../API/randomNumberAPI'
-import Modal from '../modal/modal'
+import randomNumberAPI from '../API/randomNumberAPI';
+import Modal from '../modal/modal';
+import PatBIntro from '../media/sounds/patbIntro.MP3';
+import Button from '../buttons/buttons';
 
-const GameContainer = () => {
+const GameContainer = ({ enter }) => {
   const [startGame, setStartGame] = useState(true);
   const [pattern, setPattern] = useState('    ');
   const [pastGuesses, setPastGuesses] = useState([]);
@@ -13,12 +15,20 @@ const GameContainer = () => {
   const [win, setWin] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [score, setHistoryScore] = useState('');
+  const musicRef = useRef(null);
   const [audio, setAudio] = useState(true);
 
   useEffect(() => {
-    let score = JSON.parse(localStorage.getItem('mastermind')) || {wins: 0, games: 0};
+    let score = JSON.parse(localStorage.getItem('mastermind')) || { wins: 0, games: 0 };
     setHistoryScore(score)
   }, [])
+
+  useEffect(() => {
+    if (enter && audio) {
+      musicRef.current.play();
+    }
+  }, [enter])
+
 
   useEffect(() => {
     var answers;
@@ -41,9 +51,9 @@ const GameContainer = () => {
       setRound(null);
       setShowModal(true);
       if (win) {
-        setHistoryScore({wins: ++score['wins'], games: ++score['games']});
+        setHistoryScore({ wins: ++score['wins'], games: ++score['games'] });
       } else {
-        setHistoryScore({wins: score['wins'], games: ++score['games']});
+        setHistoryScore({ wins: score['wins'], games: ++score['games'] });
       }
       localStorage.setItem('mastermind', JSON.stringify(score));
     }
@@ -51,6 +61,12 @@ const GameContainer = () => {
 
   return (
     <div className={styles['gameContainer']}>
+      {audio
+        ? <audio ref={musicRef}>
+          <source src={PatBIntro} type="audio/mpeg" />
+                Your browser does not support the audio element.
+          </audio>
+        : null}
       <CurrentGuess
         newGame={startGame}
         round={round}
@@ -65,7 +81,7 @@ const GameContainer = () => {
         past={pastGuesses}
         pattern={pattern}
       />
-
+      <Button show={true} />
       {showModal ? <Modal audio={audio} show={showModal} onClose={() => setShowModal(false)} win={win} /> : null}
     </div>
   )
