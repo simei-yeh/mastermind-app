@@ -15,9 +15,11 @@
   max-width: 767px;
 }
 
-
-
 .modal-body {
   margin: auto;
   box-sizing: border-box;
+}
+
+.modal-body > img {
+  max-width: 70vw;
 }
