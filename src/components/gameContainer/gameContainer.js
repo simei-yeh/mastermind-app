@@ -18,6 +18,7 @@ const GameContainer = ({ enter }) => {
   const musicRef = useRef(null);
   const [audio, setAudio] = useState(true);
 
+
   useEffect(() => {
     let score = JSON.parse(localStorage.getItem('mastermind')) || { wins: 0, games: 0 };
     setHistoryScore(score)
@@ -81,7 +82,14 @@ const GameContainer = ({ enter }) => {
         past={pastGuesses}
         pattern={pattern}
       />
-      <Button show={true} />
+        <Button
+          show={true}
+          callback={() => setAudio(!audio)}
+          id={'audio'}
+          text={audio ? 'Turn off audio' : 'Turn on audio'}
+          audio={audio}
+        />
+
       {showModal ? <Modal audio={audio} show={showModal} onClose={() => setShowModal(false)} win={win} /> : null}
     </div>
   )

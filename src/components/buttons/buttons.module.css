@@ -7,6 +7,7 @@
   border-radius: 5px;
   border: 1px solid red;
   display: inline-block;
+  transition: 0.2s all ease;
 }
 
 .close {
@@ -17,4 +18,32 @@
 
 .end, .start {
   margin: 3em;
+}
+
+.audio {
+  position: absolute;
+  animation: audioBlink 1s linear;
+  animation-iteration-count: 3;
+  top: 95%;
+  left: 0%;
+  display: flex;
+}
+
+@keyframes audioBlink {
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.speaker {
+  height: 1em;
+  width: 1em;
+  margin-left: 0.25em;
+  align-items: middle;
 }
