@@ -15,7 +15,7 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
 
   useEffect(() => {
     if (newGuesses.length === pattern.length) {
-      submitGuess([newGuesses, checkGuessesCorrect(newGuesses), Math.floor(Math.random() * pattern.length)]);
+      submitGuess([newGuesses, ...checkGuessesCorrect(newGuesses)]);
       setNewGuesses('');
       nextRound();
       if (newGuesses === pattern) {
@@ -27,12 +27,16 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
 
   const checkGuessesCorrect = (guesses) => {
     let answers = [];
+
     for (let i = 0; i < guesses.length; i++) {
       if (guesses[i] === pattern[i]) { answers.push('correct'); }
-      else if (pattern.includes(guesses[i])) { answers.push('partiallyCorrect'); }
-      else { answers.push('incorrect'); }
+      else if (pattern.includes(guesses[i])) { answers.push('pCorrect');}
+      else { answers.push('incorrect');}
     }
-    return answers;
+    answers.sort((a,b) => {
+      return a.length - b.length;
+    })
+    return [answers];
   }
 
   return (
