@@ -7,7 +7,7 @@ import Modal from '../modal/modal';
 import PatBIntro from '../media/sounds/patbIntro.MP3';
 import Button from '../buttons/buttons';
 
-const GameContainer = ({ enter }) => {
+const GameContainer = ({ enter, audio, toggleAudio }) => {
   const [startGame, setStartGame] = useState(true);
   const [pattern, setPattern] = useState('    ');
   const [pastGuesses, setPastGuesses] = useState([]);
@@ -15,9 +15,7 @@ const GameContainer = ({ enter }) => {
   const [win, setWin] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [score, setHistoryScore] = useState('');
-  const [audio, setAudio] = useState(true);
   const musicRef = useRef(null);
-
 
   useEffect(() => {
     let score = JSON.parse(localStorage.getItem('mastermind')) || { wins: 0, games: 0 };
@@ -93,11 +91,12 @@ const GameContainer = ({ enter }) => {
         />
         <Button
           show={true}
-          callback={() => setAudio(!audio)}
+          callback={toggleAudio}
           id={'audio'}
           text={audio ? 'Turn off audio' : 'Turn on audio'}
           audio={audio}
         />
+
       </div>
       {showModal ? <Modal audio={audio} show={showModal} onClose={() => setShowModal(false)} win={win} /> : null}
     </div>
