@@ -6,9 +6,8 @@ import GameContainer from '../gameContainer/gameContainer';
 import Brain from '../media/images/brain.png';
 
 
-const MainContainer = ({ }) => {
+const MainContainer = () => {
   const [enter, setEnter] = useState(false);
-
 
   return (
     <div className={`${styles['mainContainer']} ${styles[enter]}`}>
