@@ -47,3 +47,9 @@
   margin-left: 0.25em;
   align-items: middle;
 }
+
+.clear {
+  position: absolute;
+  top: 90%;
+  left: 0%;
+}

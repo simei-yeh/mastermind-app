@@ -15,8 +15,8 @@ const GameContainer = ({ enter }) => {
   const [win, setWin] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [score, setHistoryScore] = useState('');
-  const musicRef = useRef(null);
   const [audio, setAudio] = useState(true);
+  const musicRef = useRef(null);
 
 
   useEffect(() => {
@@ -82,14 +82,23 @@ const GameContainer = ({ enter }) => {
         past={pastGuesses}
         pattern={pattern}
       />
-        <Button
-          show={true}
-          callback={() => setAudio(!audio)}
-          id={'audio'}
-          text={audio ? 'Turn off audio' : 'Turn on audio'}
-          audio={audio}
-        />
-
+      <div className={styles['totalHistory']}>
+        <span>{`Total Games: ${score['games'] || 0}`}</span>
+        <span>{`Games Won: ${score['wins'] || 0}`}</span>
+      </div>
+      <Button
+        show={true}
+        callback={() => {localStorage.clear(); setHistoryScore({ wins: 0, games: 0 });}}
+        id={'clear'}
+        text={`Clear all history`}
+      />
+      <Button
+        show={true}
+        callback={() => setAudio(!audio)}
+        id={'audio'}
+        text={audio ? 'Turn off audio' : 'Turn on audio'}
+        audio={audio}
+      />
       {showModal ? <Modal audio={audio} show={showModal} onClose={() => setShowModal(false)} win={win} /> : null}
     </div>
   )
