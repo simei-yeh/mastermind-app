@@ -10,7 +10,7 @@ This application allows you to play the game Mastermind using 4 numbers between 
 <br />
 -To persist game history, uses localStorage
 <br />
--Uses Random Number Generator API [https://www.random.org/integers](https://www.random.org/integers) to retrieve random numbers
+-Uses Random Number Generator API to retrieve random numbers [https://www.random.org/integers](https://www.random.org/integers)
 
 ## How to play on the website
 
@@ -75,13 +75,21 @@ You will also see any lint errors in the console.
 
 This app was built to be modular and includes reusable components including buttons, header, and inputs.
 The app was built to separate concerns between 
+<br />
   1. initial landing page (mainContainer)
+<br />
   2. game container (gameContainer) which includes: 
+<br />
       a. overall game-level information, 
+<br />
       b. current guesses for the current game (currentGuess)
+<br />
       c. past guesses for the current game (gameHistory)
+<br />
       d. past game information (saved in state in the gameContainer)
+<br />
       e. modal on game win/loss (Modal)
+<br />
 The API call was built as a separate OOP to instantiate new APIs each time a game is created. Additional functionality could be built out to further add configurable difficulty levels when sending the API call.
 
 
