@@ -10,7 +10,11 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
 
   const handleInputChange = (e) => {
     const { value } = e.target;
-    setNewGuesses(value);
+    if (value.slice(-1) === 8 || value.slice(-1) === 9) {
+      return;
+    } else {
+      setNewGuesses(value);
+    }
   }
 
   useEffect(() => {
@@ -27,12 +31,27 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
 
   const checkGuessesCorrect = (guesses) => {
     let answers = [];
+    let remIndex = {};
+    let guessesRem = [];
 
-    for (let i = 0; i < guesses.length; i++) {
-      if (guesses[i] === pattern[i]) { answers.push('correct'); }
-      else if (pattern.includes(guesses[i])) { answers.push('pCorrect');}
-      else { answers.push('incorrect');}
+    for (let i = guesses.length - 1; i >= 0; i--) {
+      if (guesses[i] === pattern[i]) {
+        answers.push('correct');
+      } else {
+        remIndex[pattern[i]] = ++remIndex[pattern[i]] || 1;
+        guessesRem.push(guesses[i]);
+      }
     }
+
+    guessesRem.forEach((g, i) => {
+      if (remIndex[g]) {
+        remIndex[g] = --remIndex[g] || 0;
+        answers.push('pCorrect');
+      } else {
+        answers.push('incorrect');
+      }
+    })
+
     answers.sort((a,b) => {
       return a.length - b.length;
     })
@@ -61,14 +80,14 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
           {pattern.split('').map((num, i) =>
             <div
               className={`${styles['numbersDisplay']}
-              ${newGuesses.length >= i + 1 ? styles['filled'] : null }
-              ${newGuesses.length === i  && numberInput.current === document.activeElement ? styles['focused'] : null}`}
+              ${newGuesses.length >= i + 1 ? styles['filled'] : '' }
+              ${newGuesses.length === i  && numberInput.current === document.activeElement ? styles['focused'] : ''}`}
               key={i}
               name={i}
               num={num}
             >
               <span>
-                {newGuesses[i] | ''}
+                {`${newGuesses[i] === undefined ? '' : newGuesses[i]}`}
               </span>
             </div>)}
         </div>

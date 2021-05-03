@@ -36,6 +36,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 
@@ -47,5 +48,30 @@
 .numbersDisplay.focused {
   background-color: white;
   color: black;
+}
+
+.numbersDisplay.focused::after {
+  animation: numbersBlink 1s step-end infinite;
+  content: '';
+  display: block;
+  position: absolute;
+  height: 40%;
+  left: 50%;
+  top: 30%;
+  width: 1px;
+  background-color: black;
+}
+
+@keyframes numbersBlink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+
 }
 
