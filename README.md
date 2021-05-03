@@ -81,15 +81,15 @@ The app was built to separate concerns between
   2. game container (gameContainer) which includes: 
 <br />
       a. overall game-level information, 
-<br />
+
       b. current guesses for the current game (currentGuess)
-<br />
+
       c. past guesses for the current game (gameHistory)
-<br />
+
       d. past game information (saved in state in the gameContainer)
-<br />
+
       e. modal on game win/loss (Modal)
-<br />
+
 The API call was built as a separate OOP to instantiate new APIs each time a game is created. Additional functionality could be built out to further add configurable difficulty levels when sending the API call.
 
 
