@@ -3,9 +3,13 @@
 This application allows you to play the game Mastermind using 4 numbers between 0 and 7.
 
 -Deployed at [https://mastermind-app.vercel.app/](https://mastermind-app.vercel.app/)
+<br />
 -Best played on a webpage at 767px width or higher (however, can be played on a screen min-width 360px)
+<br />
 -Includes sound and graphics (audio can be turned off before entering or during the game)
+<br />
 -To persist game history, uses localStorage
+<br />
 -Uses Random Number Generator API [https://www.random.org/integers](https://www.random.org/integers) to retrieve random numbers
 
 ## How to play on the website
