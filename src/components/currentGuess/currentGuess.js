@@ -10,9 +10,7 @@ const CurrentGuess = ({ newGame, round, pattern, start, nextRound, submitGuess, 
 
   const handleInputChange = (e) => {
     const { value } = e.target;
-    if (value.slice(-1) === '8' || value.slice(-1) === '9') {
-      return;
-    } else {
+    if (/^[0-7]*$/.test(value)) {
       setNewGuesses(value);
     }
   }
