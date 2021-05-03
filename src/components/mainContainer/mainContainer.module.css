@@ -18,10 +18,14 @@
 }
 
 .mainImage {
-  height: 90%;
+  height: auto;
   margin: auto;
   display: flex;
   flex-direction: column;
+}
+
+.mainImage > img {
+  height: 75%;
 }
 
 
