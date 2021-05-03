@@ -18,7 +18,7 @@
 }
 
 .mainImage {
-  height: auto;
+  height: 90%;
   margin: auto;
   display: flex;
   flex-direction: column;
