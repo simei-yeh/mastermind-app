@@ -77,7 +77,6 @@ This app was built to be modular and includes reusable components including butt
 The app was built to separate concerns between 
 <br />
   1. initial landing page (mainContainer)
-<br />
   2. game container (gameContainer) which includes: 
 <br />
       a. overall game-level information, 
