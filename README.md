@@ -78,6 +78,7 @@ The app was built to separate concerns between
 <br />
   1. initial landing page (mainContainer)
   2. game container (gameContainer) which includes: 
+
       a. overall game-level information, 
 
       b. current guesses for the current game (currentGuess)
